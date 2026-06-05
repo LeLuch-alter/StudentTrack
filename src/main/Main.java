@@ -1,12 +1,11 @@
 package main;
 
-import model.Course;
-import model.Student;
-import service.TrackerService;
-
 import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
+import model.Course;
+import model.Student;
+import service.TrackerService;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);

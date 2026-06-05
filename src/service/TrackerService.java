@@ -1,20 +1,27 @@
 package service;
 
-import model.Course;
-import model.Grade;
-import model.Student;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import model.Course;
+import model.Grade;
+import model.Student;
 
 public class TrackerService {
     private final List<Student> students = new ArrayList<>();
     private final List<Course> courses = new ArrayList<>();
     private final List<Grade> grades = new ArrayList<>();
     private final Map<Integer, Student> studentsById = new HashMap<>();
+    private final DataStore dataStore = new DataStore();
+
+    public TrackerService() {
+        dataStore.load(students, courses, grades);
+        for (Student student : students) {
+            studentsById.put(student.getId(), student);
+        }
+    }
 
     // Task 2 — business logic
 
@@ -25,6 +32,7 @@ public class TrackerService {
         }
         students.add(student);
         studentsById.put(student.getId(), student);
+        save();
         System.out.println("Student added: " + student);
     }
 
@@ -34,6 +42,7 @@ public class TrackerService {
             return;
         }
         courses.add(course);
+        save();
         System.out.println("Course added: " + course);
     }
 
@@ -51,7 +60,12 @@ public class TrackerService {
             return;
         }
         grades.add(new Grade(studentId, courseCode, score));
+        save();
         System.out.println("Grade assigned: student " + studentId + ", course " + courseCode + ", score " + score);
+    }
+
+    private void save() {
+        dataStore.save(students, courses, grades);
     }
 
     public double getStudentGpa(int studentId) {

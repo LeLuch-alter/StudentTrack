@@ -1,3 +1,6 @@
 # Build output
 out/
 *.class
+
+# Saved data (created at runtime)
+data.txt
