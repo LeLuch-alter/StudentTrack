@@ -1,46 +1,46 @@
 # Student Tracker (Java)
 
-Консольное приложение для управления студентами, курсами и оценками. Во время работы данные хранятся в памяти (коллекции `List`, `Map`, `HashMap`) и автоматически сохраняются в локальный файл `data.txt`, поэтому при следующем запуске всё восстанавливается. Внешних библиотек и баз данных не требуется — только стандартная Java.
+A console application for managing students, courses, and grades. During operation, data is stored in memory (List, Map, and HashMap collections) and automatically saved to a local data.txt file, so everything is restored the next time you launch it. No external libraries or databases are required—just standard Java.
 
-## Возможности
+## Features
 
-1. Добавить студента
-2. Добавить предмет (курс)
-3. Выставить оценку (0–100)
-4. Показать средний балл (GPA) студента
-5. Показать топ-3 студентов по успеваемости
-6. Аналитика по предметам (средний балл по каждому курсу)
-7. Выход
+1. Add a student
+2. Add a subject (course)
+3. Set a grade (0–100)
+4. Show the student's average grade (GPA)
+5. Show the top 3 students by academic performance
+6. Subject analytics (average grade for each course)
+7. Exit
 
-Программа не падает при неверном вводе: некорректные числа обрабатываются через `try-catch`, оценки вне диапазона 0–100 и несуществующие студенты/курсы выводят сообщение об ошибке.
+The program does not crash on invalid input: invalid numbers are handled via try-catch, grades outside the 0–100 range, and non-existent students/courses display an error message.
 
-## Структура проекта
+## Project Structure
 
 ```
 src/
-  model/      — доменная модель (сущности)
-    Student.java   — студент (id, name, group)
-    Course.java    — предмет (courseCode, courseName)
-    Grade.java     — оценка (studentId, courseCode, score)
-  service/    — бизнес-логика и аналитика
-    TrackerService.java   — добавление, расчёт GPA, аналитика
-    DataStore.java        — сохранение/загрузка данных в файл data.txt
-  main/       — консольный интерфейс
-    Main.java
+model/ — domain model (entities)
+Student.java — student (id, name, group)
+Course.java — subject (courseCode, courseName)
+Grade.java — grade (studentId, courseCode, score)
+service/ — business logic and analytics
+TrackerService.java — adding, calculating GPA, analytics
+DataStore.java — saving/loading data to the data.txt file
+main/ — console interface
+Main.java
 README.md
 ```
 
-- **model** — сущности с приватными полями, геттерами/сеттерами и `toString()`.
-- **service** — `TrackerService`: добавление данных, выставление оценок, расчёт GPA и аналитика (хранение в `ArrayList` + `HashMap<Integer, Student>` для быстрого поиска по ID). `DataStore` сохраняет всё в `data.txt` после каждого изменения и загружает при старте — только стандартная Java.
-- **main** — меню через `Scanner` и цикл `while(true)`.
+- **model** — entities with private fields, getters/setters, and `toString()`.
+- **service** — `TrackerService`: adding data, assigning grades, calculating GPA, and analytics (stored in `ArrayList` + `HashMap<Integer, Student>` for quick lookup by ID). `DataStore` saves everything to `data.txt` after each change and loads it at startup — standard Java only.
+- **main** — menu via `Scanner` and a `while(true)` loop.
 
-## Требования
+## Requirements
 
-- JDK 17 или новее (разработано и проверено на JDK 22).
+- JDK 17 or later (developed and tested on JDK 22).
 
-## Сборка и запуск
+## Building and Running
 
-Из корня проекта:
+From the project root:
 
 ### Linux / macOS
 
@@ -56,12 +56,12 @@ javac -d out (Get-ChildItem -Recurse src -Filter *.java).FullName
 java -cp out main.Main
 ```
 
-После запуска выберите пункт меню (1–7) и следуйте подсказкам.
+After launching, select a menu item (1–7) and follow the prompts.
 
-## Пример использования
+## Usage example
 
 ```
-===== Student Tracker =====
+Student Tracker 
 1. Add student
 ...
 Choose an option: 1
