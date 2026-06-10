@@ -6,12 +6,10 @@ import model.Student;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 // Saves and loads all data to a plain text file using only the standard library.
-// One line per record, fields separated by a tab:
 //   STUDENT <id> <name> <group>
 //   COURSE  <courseCode> <courseName>
 //   GRADE   <studentId> <courseCode> <score>

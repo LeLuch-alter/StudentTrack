@@ -102,7 +102,6 @@ public class TrackerService {
         return averages;
     }
 
-    // Helpers
 
     private double calculateGpa(int studentId) {
         double sum = 0.0;
